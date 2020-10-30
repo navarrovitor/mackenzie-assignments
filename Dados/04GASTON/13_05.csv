@@ -1,0 +1,7 @@
+AGE,Number of Deaths,Share of deaths,With underlying conditions,Without underlying conditions,Unknown if with underlying cond.,Share of deaths of unknown + w/o cond.
+0 - 17 years old,9,0.06%,6,3,0,0.02%
+18 - 44 years old,601,3.90%,476,17,108,0.80%
+45 - 64 years old,"3,413",22.40%,"2,851",72,490,3.70%
+65 - 74 years old,"3,788",24.90%,"2,801",5,982,6.50%
+75+ years old,"7,419",48.70%,"5,236",2,"2,181",14.30%
+TOTAL,"15,230",100%,"11,370 (75%)",99 (0.7%),"1,551 (24.7%)",25%
