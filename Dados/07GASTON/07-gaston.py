@@ -5,107 +5,46 @@ import pandas as pd
 
 data = pd.read_csv("axisdata.csv")
 
+years = {}
+for i in range(1, 6):
+    years[i] = data.query(f"`Years Experience` == {i}")["Cars Sold"].mean()
+
+print(
+    f"A média de carros vendidos no ano foi igual a {round(data['Cars Sold'].mean())}"
+)
+
+print("------------------------------------------------------------------------")
+print(f"O máximo de carros vendidos foi {data['Cars Sold'].max()}\n")
+print(f"Os nomes dos vendedores são:")
+for i in data.index[data["Cars Sold"] == data["Cars Sold"].max()].tolist():
+    print(data.loc[[i]].to_dict()["Fname"][i], data.loc[[i]].to_dict()["Lname"][i])
+print("------------------------------------------------------------------------")
+print(f"O mínimo de carros vendidos foi {data['Cars Sold'].min()}\n")
+print(f"Os nomes dos vendedores são:")
+for i in data.index[data["Cars Sold"] == data["Cars Sold"].min()].tolist():
+    print(data.loc[[i]].to_dict()["Fname"][i], data.loc[[i]].to_dict()["Lname"][i])
+
+print("------------------------------------------------------------------------")
+print(
+    f"A média de horas trabalhadas para as pessoas que vendem mais de três carros foi igual a {round(data.query('`Cars Sold` > 3')['Hours Worked'].mean())}"
+)
+
 plt.figure(figsize=(12, 6))
 
-plt.subplot(2, 3, 1)
+plt.subplot(1, 2, 1)
 plt.tight_layout(pad=2)
+gen = data["Gender"].value_counts()
+colors = ["#23C9FF", "#D90368"]
+plt.pie(gen, autopct="%1.2f%%", colors=colors)
+plt.title("Taxa de vendas por gênero (F e M)")
+plt.legend("M" "F")
 
-plt.subplot(2, 3, 2)
+plt.subplot(1, 2, 2)
 plt.tight_layout(pad=2)
+for key in years:
+    plt.bar(key, years[key], align="center", width=1, color="#3C6997")
+plt.xlabel("Anos de Experiência")
+plt.ylabel("Média de horas trabalhadas")
+plt.title("Média das horas trabalhadas para cada valor da experiência")
 
 plt.show()
-
-maximo = data.index[data["Cars Sold"] == data["Cars Sold"].max()].tolist()
-nomes_max = [
-    "August Looner",
-    "Brad Withers",
-    "Brad Michaels",
-    "Brad Baker",
-    "Carla Mulgrew",
-    "Charles Kennedy",
-    "Charles Turner",
-    "Charles Davidson",
-    "Frank Kane",
-    "John Franklin",
-    "Lisa Michaels",
-    "Onika Turner",
-    "Paula Sears",
-    "Peter Rogers",
-    "Ronelle Turner",
-    "Sam Davidson",
-    "Sam Turner",
-    "Sam Johnson",
-    "Sam Monroe",
-    "Sam Patterson",
-    "Tom Davidson",
-    "Tom Kane",
-    "Tom Davidson",
-    "Victoria Kennedy",
-    "Walter Kane",
-]
-
-minimo = data.index[data["Cars Sold"] == data["Cars Sold"].min()].tolist()
-nomes_min = [
-    "Adam Looner",
-    "Adam Adams",
-    "August Mulgrew",
-    "Betty Jackson",
-    "Betty Sapp",
-    "Betty Kennedy",
-    "Brad Vaughn",
-    "Brad Mulgrew",
-    "Carla Ettienne",
-    "Carla Baker",
-    "Carla Isaacson",
-    "Carla Ettienne",
-    "Carla Looner",
-    "Carla Jackson",
-    "Charles Walters",
-    "Charles Walters",
-    "Denise Samuelson",
-    "Francine Henderson",
-    "Frank Johnson",
-    "Frank Samuelson",
-    "Frank Rogers",
-    "Jack Adams",
-    "Jack Carter",
-    "Jackie Rose",
-    "Jackie Franklin",
-    "Jada Johnson",
-    "Jada Rose",
-    "John Mulgrew",
-    "Karen Samuelson",
-    "Lisa Martins",
-    "Mary Franklin",
-    "Nicole Moore",
-    "Onika Turner",
-    "Paula Isaacson",
-    "Peter Adams",
-    "Peter Davidson",
-    "Roger Kennedy",
-    "Roger Sapp",
-    "Samantha Johnson",
-    "Samantha Sears",
-    "Samantha Rogers",
-    "Tom Looner",
-    "Victoria Rogers",
-    "Walter Mulgrew",
-]
-
-print(f"Média de carros vendidos no ano: {round(data['Cars Sold'].mean())}")
-
-print("------------------------------------------------------------------------")
-print(f"O valor máximo de carros vendidos: {data['Cars Sold'].max()}\n")
-print(
-    f"Os índices dos vendedores são:\n{', '.join(str(i) for i in maximo)}\n\nSeus nomes são:"
-)
-for i in nomes_max:
-    print(i)
-
-print("------------------------------------------------------------------------")
-print(f"O valor mínimo de carros vendidos: {data['Cars Sold'].min()}\n")
-print(
-    f"Os índices dos vendedores são:\n{', '.join(str(i) for i in minimo)}\n\nSeus nomes são:"
-)
-for i in nomes_min:
-    print(i)
