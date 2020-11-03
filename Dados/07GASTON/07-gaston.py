@@ -45,6 +45,6 @@ for key in years:
     plt.bar(key, years[key], align="center", width=1, color="#3C6997")
 plt.xlabel("Anos de Experiência")
 plt.ylabel("Média de horas trabalhadas")
-plt.title("Média das horas trabalhadas para cada valor da experiência")
+plt.title("Média das horas trabalhadas para cada ano de experiência")
 
 plt.show()
