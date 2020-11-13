@@ -7,7 +7,7 @@ cor_fundo = (0, 0, 0)
 tela = pygame.display.set_mode((l, a))
 pygame.display.set_caption("vitão e bia")
 
-logo = pygame.image.load("image/logo_transparent.png")
+logo = pygame.image.load("images/logo_transparent.png")
 logo = pygame.transform.scale(logo, (300, 300))
 ret_logo = logo.get_rect()
 vel_logo = [1, 1]
