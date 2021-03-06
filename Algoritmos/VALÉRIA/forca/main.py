@@ -120,7 +120,7 @@ while running:
         break
 
     if estado_boneco == 6:
-        fim_de_jogo("VOCE PERDEU")
+        fim_de_jogo("VOCE PERDEU!")
         break
 
 pygame.quit()
