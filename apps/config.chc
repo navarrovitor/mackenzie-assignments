@@ -1,0 +1,7 @@
+#Config
+#Wed Mar 17 00:19:19 BRT 2021
+cfg.tipodefault=0
+cfg.mostrardimensoesaomover=true
+cfg.location.x=0
+cfg.recentes=/home/vitor/code/navarrovitor/mackenzie-assignments/BD/MER.brM3
+cfg.location.y=27

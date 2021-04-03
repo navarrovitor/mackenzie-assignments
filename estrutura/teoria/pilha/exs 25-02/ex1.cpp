@@ -26,35 +26,51 @@ bool full(stack &p)
     return true;
   else
     return false;
-}
+};
 
 void push(stack &p, int x)
 {
   p.data[++p.top] = x;
-  cout << endl
-       << "top: " << p.top << endl
-       << x << " empilhado" << endl;
-}
+  // cout << endl
+  //      << "top: " << p.top << endl
+  //      << x << " empilhado" << endl;
+};
 
 int pop(stack &p)
 {
   return (p.data[p.top--]);
-}
+};
 
 int qty(stack &p)
 {
   return (p.top + 1);
-}
+};
 
 void print(stack &p)
 {
-  // for (int i = 0; i < MAX; i++)
-  // {
-  //   cout << p.data[i] << ", ";
-  // };
-  cout << endl
-       << "Sua pilha tem " << qty(p) << " elementos." << endl;
-}
+  stack aux;
+  start(aux);
+
+  int element, i = 0, quant = qty(p);
+
+  cout
+      << endl
+      << "Sua pilha tem " << qty(p) << " elementos." << endl
+      << "E eles são:" << endl;
+
+  for (i = 0; i < quant; ++i)
+  {
+    element = pop(p);
+    cout << element << endl;
+    push(aux, element);
+  }
+
+  for (i = 0; i < quant; i++)
+  {
+    element = pop(aux);
+    push(p, element);
+  };
+};
 
 int main()
 {
